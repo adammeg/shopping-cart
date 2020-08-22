@@ -22,6 +22,12 @@ function ready() {
         button.addEventListener('click', addToCartClicked)
     }
 
+    var likeButtons = document.getElementsByClassName('bi')
+    for(var i=0;i<likeButtons.length; i++ ) {
+        var button = likeButtons[i];
+        button.addEventListener('click' , toggle)
+    }
+
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
 }
 
@@ -101,23 +107,20 @@ function updateCartTotal() {
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
 }
 
-let button = document.getElementsByClassName('heart');
-button.onclick = function() {
-        this.style.backgroundColor = randomColor(red);}
+/*let button = document.getElementsByClassName('heart');
+button.onclick = function () {
+    this.style.backgroundColor = randomColor(red);
+}
+*/
 
 
+function toggle(event) {
+    if (event.target.classList.contains("liked")) {
+        event.target.classList.remove("liked");
+    } else {
+        event.target.classList.add("liked");
+    }
 
-        var btn = document.getElementById('btn')
-        function toggle(){
-            if(btn.classList.contains("far")){
-                btn.classList.remove("far");
-                btn.classList.add("fas");
-            }else{
-                btn.classList.remove("fas");
-                btn.classList.add("far");
-            }
-
-        }
-
-
+    //console.log(event.target.classList)
+}
 
